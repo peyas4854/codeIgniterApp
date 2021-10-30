@@ -13,7 +13,6 @@ class News extends CI_Controller
     public function index()
     {
         $data['news'] = $this->news_model->get_news();
-        $data['title'] = 'News archive';
 
         $this->load->view('templates/header', $data);
         $this->load->view('news/index', $data);
@@ -29,7 +28,6 @@ class News extends CI_Controller
         }
 
         $data['title'] = $data['news_item']['title'];
-
         $this->load->view('templates/header', $data);
         $this->load->view('news/view', $data);
         $this->load->view('templates/footer');
@@ -54,7 +52,8 @@ class News extends CI_Controller
         else
         {
             $this->news_model->set_news();
-            $this->load->view('news/success');
+            redirect('news');
+//            $this->load->view('news/success');
         }
     }
 
